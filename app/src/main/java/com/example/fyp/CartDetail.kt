@@ -19,17 +19,15 @@ class CartDetail : AppCompatActivity() {
         setContentView(R.layout.activity_cart_detail)
 
 
-        placeOrder.setOnClickListener{
-            val intent = Intent(this,payment::class.java)
 
-            startActivity(intent)
-        }
 
         cart = mutableListOf()
 
         mRecyclerView = recyclerView1
 
         mDatabase = FirebaseDatabase.getInstance().getReference("Carts")
+
+        val intent = Intent(this,payment::class.java)
 
         mDatabase.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
@@ -59,6 +57,9 @@ class CartDetail : AppCompatActivity() {
                         total = subTotal + fee
 
                         totalAmount.text = total.toString()
+                        intent.putExtra("Total",totalAmount.text.toString())
+                        intent.putExtra("sub",subtotal.text.toString())
+                        intent.putExtra("DeliveryFee",deliveryFee.text.toString())
 
                     }
 
@@ -79,5 +80,12 @@ class CartDetail : AppCompatActivity() {
             }
 
         })
+
+        placeOrder.setOnClickListener{
+
+            //val intent = Intent(this,payment::class.java)
+
+            startActivity(intent)
+        }
     }
 }

@@ -47,7 +47,7 @@ class ReFoodAdapter(var food: MutableList<ReFood>):
         val name: TextView = itemView.findViewById(R.id.name)
         val des: TextView = itemView.findViewById(R.id.desc)
         val rating: TextView = itemView.findViewById(R.id.rating)
-        val image: ImageView = itemView.findViewById((R.id.image))
+        val image: ImageView = itemView.findViewById((R.id.restaurantImage))
 
 
     }
