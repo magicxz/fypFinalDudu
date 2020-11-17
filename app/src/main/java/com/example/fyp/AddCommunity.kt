@@ -5,14 +5,12 @@ import android.app.AlertDialog
 import android.app.ProgressDialog
 import android.content.Intent
 import android.net.Uri
-import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
-import android.util.DisplayMetrics
-import android.util.Log
 import android.widget.Toast
-import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import com.example.fyp.adapter.CommunityAdapter
+import com.example.fyp.model.Post
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.storage.StorageReference
@@ -179,7 +177,8 @@ class AddCommunity : AppCompatActivity() {
                         postlist.add(post!!)
                     }
 
-                    val adapter = CommunityAdapter(postlist)
+                    val adapter =
+                        CommunityAdapter(postlist)
 
                     CountOrder.total = adapter.itemCount
                 }

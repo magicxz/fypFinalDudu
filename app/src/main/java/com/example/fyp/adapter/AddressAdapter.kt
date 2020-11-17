@@ -1,4 +1,4 @@
-package com.example.fyp
+package com.example.fyp.adapter
 
 import android.app.AlertDialog
 import android.content.Intent
@@ -7,12 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.recyclerview.widget.RecyclerView
+import com.example.fyp.LoadAddress
+import com.example.fyp.R
+import com.example.fyp.model.Address
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import de.hdodenhof.circleimageview.CircleImageView
-import kotlinx.android.synthetic.main.add_address.*
-import kotlinx.android.synthetic.main.edit_address.view.*
-import kotlinx.android.synthetic.main.home.*
 
 class AddressAdapter(var address : MutableList<Address>): RecyclerView.Adapter<AddressAdapter.MyViewHolder>() {
 
@@ -57,7 +57,8 @@ class AddressAdapter(var address : MutableList<Address>): RecyclerView.Adapter<A
         //holder.addressType.context.startActivity(intent)
 
         holder.editAddress.setOnClickListener {
-            val layoutInflater = LayoutInflater.from(holder.editAddress.context).inflate(R.layout.edit_address,null,true)
+            val layoutInflater = LayoutInflater.from(holder.editAddress.context).inflate(
+                R.layout.edit_address,null,true)
             val dialogbuilder = AlertDialog.Builder(holder.editAddress.context)
             dialogbuilder.setView(layoutInflater)
             val dialog = dialogbuilder.create()
@@ -158,7 +159,7 @@ class AddressAdapter(var address : MutableList<Address>): RecyclerView.Adapter<A
         holder.deleteAddress.setOnClickListener {
             val addressId = address[position].addressId
             val dialogBuilder = AlertDialog.Builder(holder.deleteAddress.context)
-                .setTitle("Remove Address").setIcon(R.drawable.icon).setPositiveButton("Yes"){_, _ ->
+                .setTitle("Remove Address").setIcon(R.drawable.icon).setPositiveButton("Yes"){ _, _ ->
                     FirebaseDatabase.getInstance().getReference("Address").child(addressId).removeValue()
                 }
                 .setNegativeButton("No"){_, _ ->

@@ -6,9 +6,9 @@ import android.app.ProgressDialog
 import android.content.Intent
 import android.os.Bundle
 import android.widget.EditText
-import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.fyp.model.Address
 import com.google.android.libraries.places.api.Places
 import com.google.android.libraries.places.api.model.Place
 import com.google.android.libraries.places.widget.Autocomplete
@@ -19,7 +19,6 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.add_address.*
 import java.util.*
-import kotlin.collections.HashMap
 
 class AddAddress : AppCompatActivity(){
 
@@ -118,7 +117,16 @@ class AddAddress : AppCompatActivity(){
             var addressId = usersRef.push().key.toString()
             val currentUserID = FirebaseAuth.getInstance().currentUser!!.uid
 
-            val mapAddress = Address(addressId,addressType.text.toString(),addressLine.text.toString(),addressLine2.text.toString(),city.text.toString(),state.text.toString(),postcode.text.toString(),currentUserID)
+            val mapAddress = Address(
+                addressId,
+                addressType.text.toString(),
+                addressLine.text.toString(),
+                addressLine2.text.toString(),
+                city.text.toString(),
+                state.text.toString(),
+                postcode.text.toString(),
+                currentUserID
+            )
 
             usersRef.child(addressId).setValue(mapAddress).addOnCompleteListener{task ->
                 if(task.isSuccessful){

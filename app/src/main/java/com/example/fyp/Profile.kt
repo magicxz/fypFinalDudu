@@ -1,18 +1,17 @@
 package com.example.fyp
 
 import android.app.Activity
-import android.app.AlertDialog
 import android.app.ProgressDialog
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.view.WindowManager
-import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
+import com.example.fyp.model.Users
 import com.google.android.gms.tasks.Continuation
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
@@ -81,7 +80,8 @@ class Profile : AppCompatActivity() {
 
             override fun onDataChange(snapshot: DataSnapshot) {
                 if(snapshot.exists()){
-                    user =snapshot.getValue<Users>(Users::class.java)!!
+                    user =snapshot.getValue<Users>(
+                        Users::class.java)!!
                     profileName.setText(user.username)
                     eEmail.setText(user.email)
                     ePhone.setText(user.phone)

@@ -1,16 +1,23 @@
-package com.example.fyp
+package com.example.fyp.adapter
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
+import com.example.fyp.CommunityFragment
+import com.example.fyp.DeliveryFragment
+import com.example.fyp.RestaurantFragment
 
 class PageAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
     override fun getItem(position: Int): Fragment {
         when(position){
-            0 -> {return DeliveryFragment()}
-            1 -> {return RestaurantFragment()}
-            2 -> {return CommunityFragment()}
-            else -> {return DeliveryFragment()}
+            0 -> {return DeliveryFragment()
+            }
+            1 -> {return RestaurantFragment()
+            }
+            2 -> {return CommunityFragment()
+            }
+            else -> {return DeliveryFragment()
+            }
         }
     }
 

@@ -1,35 +1,26 @@
-package com.example.fyp
+package com.example.fyp.adapter
 
-import android.app.AlertDialog
-import android.content.Context
 import android.content.Intent
-import android.media.Image
-import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-import androidx.core.content.ContextCompat.startActivity
-import androidx.core.content.res.ColorStateListInflaterCompat.inflate
-import androidx.core.content.res.ComplexColorCompat.inflate
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.facebook.shimmer.ShimmerFrameLayout
+import com.example.fyp.*
+import com.example.fyp.R
+import com.example.fyp.model.*
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.squareup.picasso.Picasso
 import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.android.synthetic.main.comment.view.*
-import kotlinx.android.synthetic.main.fragment_community.view.*
-import kotlinx.android.synthetic.main.header.*
-import kotlinx.android.synthetic.main.load_post.*
 import java.time.LocalDateTime
 import java.time.ZoneId
 import java.time.format.DateTimeFormatter
-import java.util.logging.Handler
 
 class CommunityAdapter(val posts : MutableList<Post>): RecyclerView.Adapter<CommunityAdapter.MyViewHolder>() {
 
@@ -151,10 +142,8 @@ class CommunityAdapter(val posts : MutableList<Post>): RecyclerView.Adapter<Comm
                                 if(p0.exists()){
 
                                     likeNotify.notificationID = p0.value.toString()
-                                    //likeNotificationList.add(likeNot!!)
-
-                                    getKey.key=p0.value.toString()
-                                    Log.d("abcdddd", getKey.key)
+                                    //likeNotificationList.add(lgetKey.key=p0.value.toString()
+                                    //Log.d("abcdddd", getKey.key)
 
                                 }
                             }
@@ -186,7 +175,16 @@ class CommunityAdapter(val posts : MutableList<Post>): RecyclerView.Adapter<Comm
                                         if(!(currentUserID.equals(userId))){
                                             val user =snapshot.getValue(Users::class.java)!!
                                             val message = user.username + " like your post"
-                                            val storeNotify = Notification(notify!!,getTime(),userId,currentUserID,message,"false",postId)
+                                            val storeNotify =
+                                                Notification(
+                                                    notify!!,
+                                                    getTime(),
+                                                    userId,
+                                                    currentUserID,
+                                                    message,
+                                                    "false",
+                                                    postId
+                                                )
 
                                             ref2.child(notify).setValue(storeNotify)
                                             ref3.child(postId).child(currentUserID).setValue(notify!!)
@@ -260,7 +258,8 @@ class CommunityAdapter(val posts : MutableList<Post>): RecyclerView.Adapter<Comm
         })
 
         holder.comment.setOnClickListener {
-            val layoutInflater = LayoutInflater.from(holder.comment.context).inflate(R.layout.comment,null,true)
+            val layoutInflater = LayoutInflater.from(holder.comment.context).inflate(
+                R.layout.comment,null,true)
             val dialog = BottomSheetDialog(holder.comment.context)
             val reComment = layoutInflater.findViewById<RecyclerView>(R.id.reComment)
 
@@ -300,7 +299,16 @@ class CommunityAdapter(val posts : MutableList<Post>): RecyclerView.Adapter<Comm
                                 if(!(currentUserID.equals(userId))){
                                     val user =snapshot.getValue(Users::class.java)!!
                                     val message = user.username + " comment on your post"
-                                    val storeNotify = Notification(notify!!,getTime(),userId,currentUserID,message,"false",postId)
+                                    val storeNotify =
+                                        Notification(
+                                            notify!!,
+                                            getTime(),
+                                            userId,
+                                            currentUserID,
+                                            message,
+                                            "false",
+                                            postId
+                                        )
 
                                     ref2.child(notify).setValue(storeNotify)
                                     ref4.child(postId).child(currentUserID).setValue(notify!!)
@@ -309,7 +317,13 @@ class CommunityAdapter(val posts : MutableList<Post>): RecyclerView.Adapter<Comm
                         }
                     })
 
-                    val mapComment = Comment(commentId!!,postId!!,currentUserID,commContent.text.toString(),getTime())
+                    val mapComment = Comment(
+                        commentId!!,
+                        postId!!,
+                        currentUserID,
+                        commContent.text.toString(),
+                        getTime()
+                    )
 
                     ref1.child(commentId).setValue(mapComment).addOnCompleteListener{task ->
                         if(task.isSuccessful){
@@ -349,7 +363,8 @@ class CommunityAdapter(val posts : MutableList<Post>): RecyclerView.Adapter<Comm
 
                         reComment.layoutManager = mLayoutManager
                         reComment.scrollToPosition(commentList.size-1)
-                        reComment.adapter = CommentAdapter(commentList)
+                        reComment.adapter =
+                            CommentAdapter(commentList)
                     }else{
                         holder.commentCount.text = "no comment..."
                     }

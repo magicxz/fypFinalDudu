@@ -2,13 +2,15 @@ package com.example.fyp
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.fyp.adapter.AddressAdapter
+import com.example.fyp.model.Address
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.address.*
-import kotlinx.android.synthetic.main.fragment_community.view.*
 
 class LoadAddress : AppCompatActivity(){
 
@@ -31,8 +33,8 @@ class LoadAddress : AppCompatActivity(){
             }
 
             override fun onDataChange(snapshot: DataSnapshot) {
+                addressList.clear()
                 if(snapshot.exists()){
-                    addressList.clear()
                     addimg.isVisible = false
                     textAdd.isVisible = false
 
@@ -46,7 +48,20 @@ class LoadAddress : AppCompatActivity(){
 
                     reAddress.layoutManager = mLayoutManager
                     reAddress.scrollToPosition(addressList.size-1)
-                    reAddress.adapter = AddressAdapter(addressList)
+                    reAddress.adapter =
+                        AddressAdapter(addressList)
+                }else{
+                    addimg.isVisible = true
+                    textAdd.isVisible = true
+                    Log.d("asd","here")
+
+                    val mLayoutManager = LinearLayoutManager(applicationContext)
+                    mLayoutManager.reverseLayout = true
+
+                    reAddress.layoutManager = mLayoutManager
+                    reAddress.scrollToPosition(addressList.size-1)
+                    reAddress.adapter =
+                        AddressAdapter(addressList)
                 }
             }
         })

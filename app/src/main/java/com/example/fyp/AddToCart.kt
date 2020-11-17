@@ -3,6 +3,7 @@ package com.example.fyp
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
+import com.example.fyp.model.Cart
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.squareup.picasso.Picasso
@@ -64,7 +65,14 @@ class AddToCart : AppCompatActivity() {
 
         val currentUser = FirebaseAuth.getInstance().currentUser!!.uid
 
-        val cartItem = Cart(cartId.toString(),currentUser,number.text.toString().toInt(),name,price.toDouble(),image)
+        val cartItem = Cart(
+            cartId.toString(),
+            currentUser,
+            number.text.toString().toInt(),
+            name,
+            price.toDouble(),
+            image
+        )
 
         ref.child(cartId.toString()).setValue(cartItem)
 

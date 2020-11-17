@@ -1,35 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#050505"
-    tools:context=".MainActivity">
-
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerview"
-        android:layout_width="409dp"
-        android:layout_height="586dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5"
-        app:layout_constraintVertical_bias="0.111" />
-
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="32dp"
-        android:text="Recommended For You"
-        android:textColor="@color/white"
-        android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchFood" />
+    tools:context=".DeliveryFragment">
 
     <EditText
         android:id="@+id/searchFood"
@@ -38,23 +15,29 @@
         android:layout_marginTop="32dp"
         android:background="@drawable/search_layout"
         android:ems="10"
-        android:hint="Search the food"
+        android:hint="                 Search the food"
         android:inputType="textPersonName"
-        android:paddingLeft="110dp"
+        android:paddingLeft="10dp"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:drawableLeft="@drawable/ic_outline_search"
+        android:layout_centerHorizontal="true"/>
 
-    <ImageView
-        android:id="@+id/imageView"
+    <TextView
+        android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        app:layout_constraintBottom_toBottomOf="@+id/searchFood"
-        app:layout_constraintStart_toStartOf="@+id/searchFood"
-        app:layout_constraintTop_toTopOf="@+id/searchFood"
-        app:srcCompat="@android:drawable/ic_menu_search" />
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="30dp"
+        android:text="Recommended For You"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:layout_below="@+id/searchFood"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_below="@+id/textView5"/>
+</RelativeLayout>

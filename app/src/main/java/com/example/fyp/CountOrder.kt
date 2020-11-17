@@ -1,5 +1,8 @@
 package com.example.fyp
 
+import com.example.fyp.model.Post
+import com.example.fyp.model.Users
+
 class CountOrder{
 
     companion object{
@@ -7,8 +10,10 @@ class CountOrder{
         var total:Int = 0
         var commentCount : Int = 0
 
-        var getUser : Users = Users()
-        var getPost : Post = Post()
+        var getUser : Users =
+            Users()
+        var getPost : Post =
+            Post()
 
         fun get():Int{
             return CountOrder.number

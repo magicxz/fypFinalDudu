@@ -8,6 +8,8 @@ import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.fyp.adapter.ReFoodAdapter
+import com.example.fyp.model.ReFood
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.fragment_delivery.*
 import kotlinx.android.synthetic.main.fragment_delivery.view.*
@@ -68,13 +70,14 @@ class DeliveryFragment : Fragment() {
                         }
 
 
-                        val adapter = ReFoodAdapter(foodList)
+                        val adapter =
+                            ReFoodAdapter(foodList)
 
                         //mRecyclerView = findViewById(R.id.recyclerview)
 
                         mRecyclerView.setHasFixedSize(true)
 
-                        //mRecyclerView.scrollToPosition(foodList.size-1)
+                        mRecyclerView.scrollToPosition(foodList.size-1)
 
                         mRecyclerView.layoutManager = LinearLayoutManager(context,RecyclerView.VERTICAL,false)
 

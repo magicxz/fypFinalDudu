@@ -1,4 +1,4 @@
-package com.example.fyp
+package com.example.fyp.adapter
 
 import android.content.Intent
 import android.view.LayoutInflater
@@ -7,6 +7,9 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.fyp.FoodDetail
+import com.example.fyp.R
+import com.example.fyp.model.ReFood
 import com.squareup.picasso.Picasso
 
 class ReFoodAdapter(var food: MutableList<ReFood>):
@@ -27,7 +30,7 @@ class ReFoodAdapter(var food: MutableList<ReFood>):
         Picasso.get().load(food[position].image).into(holder.image)
 
         holder.image.setOnClickListener{
-            val intent = Intent(holder.name.context,FoodDetail::class.java)
+            val intent = Intent(holder.name.context, FoodDetail::class.java)
             intent.putExtra("foodId",food[position].foodId)
             intent.putExtra("Name",food[position].name)
             intent.putExtra("Image",food[position].image)

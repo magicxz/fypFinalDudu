@@ -1,4 +1,4 @@
-package com.example.fyp
+package com.example.fyp.adapter
 
 import android.content.Intent
 import android.view.LayoutInflater
@@ -7,6 +7,9 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.fyp.AddToCart
+import com.example.fyp.R
+import com.example.fyp.model.Food
 import com.squareup.picasso.Picasso
 
 class FoodAdapter (var foodDetail: MutableList<Food>):
@@ -26,7 +29,7 @@ class FoodAdapter (var foodDetail: MutableList<Food>):
         Picasso.get().load(foodDetail[position].image).into(holder.image1)
 
         holder.image1.setOnClickListener{
-            val intent = Intent(holder.name1.context,AddToCart::class.java)
+            val intent = Intent(holder.name1.context, AddToCart::class.java)
             intent.putExtra("DetailId",foodDetail[position].DetailId)
             intent.putExtra("Name",foodDetail[position].name)
             intent.putExtra("Price",foodDetail[position].price.toString())

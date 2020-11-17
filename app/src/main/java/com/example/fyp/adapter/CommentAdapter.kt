@@ -1,11 +1,13 @@
-package com.example.fyp
+package com.example.fyp.adapter
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.google.firebase.auth.FirebaseAuth
+import com.example.fyp.R
+import com.example.fyp.model.Comment
+import com.example.fyp.model.Users
 import com.google.firebase.database.*
 import com.squareup.picasso.Picasso
 import de.hdodenhof.circleimageview.CircleImageView

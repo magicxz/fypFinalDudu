@@ -1,10 +1,8 @@
 package com.example.fyp
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
-import android.view.WindowManager
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
@@ -13,6 +11,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.fyp.adapter.CommentAdapter
+import com.example.fyp.model.Comment
+import com.example.fyp.model.LikeNotification
+import com.example.fyp.model.Notification
+import com.example.fyp.model.Users
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
@@ -127,7 +130,16 @@ class PostDetails :AppCompatActivity() {
                             if(!(currentUserID.equals(userId))){
                                 val user =snapshot.getValue(Users::class.java)!!
                                 val message = user.username + " comment on your post"
-                                val storeNotify = Notification(notify!!,getTime(),userId,currentUserID,message,"false",postId)
+                                val storeNotify =
+                                    Notification(
+                                        notify!!,
+                                        getTime(),
+                                        userId,
+                                        currentUserID,
+                                        message,
+                                        "false",
+                                        postId
+                                    )
 
                                 ref5.child(notify).setValue(storeNotify)
                                 ref6.child(postId).child(currentUserID).setValue(notify!!)
@@ -136,7 +148,13 @@ class PostDetails :AppCompatActivity() {
                     }
                 })
 
-                val mapComment = Comment(commentId!!,postId!!,currentUserID,commContent.text.toString(),getTime())
+                val mapComment = Comment(
+                    commentId!!,
+                    postId!!,
+                    currentUserID,
+                    commContent.text.toString(),
+                    getTime()
+                )
 
                 ref4.child(commentId).setValue(mapComment).addOnCompleteListener{task ->
                     if(task.isSuccessful){
@@ -178,7 +196,8 @@ class PostDetails :AppCompatActivity() {
 
                     reComment.layoutManager = mLayoutManager
                     reComment.scrollToPosition(commentList.size-1)
-                    reComment.adapter = CommentAdapter(commentList)
+                    reComment.adapter =
+                        CommentAdapter(commentList)
                 }else{
                     commentCount1.text = "no comment..."
                 }
@@ -244,7 +263,16 @@ class PostDetails :AppCompatActivity() {
                             if(!(currentUserID.equals(userId))){
                                 val user =snapshot.getValue(Users::class.java)!!
                                 val message = user.username + " like your post"
-                                val storeNotify = Notification(notify!!,getTime(),userId,currentUserID,message,"false",postId)
+                                val storeNotify =
+                                    Notification(
+                                        notify!!,
+                                        getTime(),
+                                        userId,
+                                        currentUserID,
+                                        message,
+                                        "false",
+                                        postId
+                                    )
 
                                 ref2.child(notify).setValue(storeNotify)
                                 ref3.child(postId).child(currentUserID).setValue(notify!!)

@@ -29,7 +29,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/message"
-            android:text="hi testing 123"
+            android:text="hi testing 123 asdasdasdasdasd"
             android:textColor="@color/white"
             android:layout_toRightOf="@+id/proImg"
             android:layout_marginTop="15dp"
@@ -56,12 +56,12 @@
             android:layout_marginTop="5dp" />
 
         <ImageView
-            android:layout_width="65dp"
-            android:layout_height="65dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:id="@+id/postImage"
             android:src="@drawable/ic_outline_white_photo"
             android:layout_alignParentRight="true"
             android:layout_marginRight="10dp"
-            android:layout_centerVertical="true"/>
+            android:layout_marginTop="35dp"/>
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

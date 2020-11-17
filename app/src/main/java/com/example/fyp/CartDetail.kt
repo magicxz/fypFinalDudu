@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.fyp.adapter.cartAdapter
+import com.example.fyp.model.Cart
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_cart_detail.*
 
@@ -31,10 +33,9 @@ class CartDetail : AppCompatActivity() {
 
         mDatabase.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
+                cart.clear()
+
                 if(dataSnapshot!!.exists()){
-
-                    cart.clear()
-
                     var fee = 0.0
 
                     var subTotal = 0.0

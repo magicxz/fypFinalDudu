@@ -4,10 +4,11 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.fyp.adapter.NotificationAdapter
+import com.example.fyp.model.Notification
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.notification.*
-import java.util.*
 
 class LoadNotification : AppCompatActivity() {
 
@@ -35,11 +36,14 @@ class LoadNotification : AppCompatActivity() {
                     notificationList.clear()
 
                     for(h in p0.children){
-                        val notification = h.getValue<Notification>(Notification::class.java)
+                        val notification = h.getValue<Notification>(
+                            Notification::class.java)
                         notificationList.add(notification!!)
                     }
 
-                    val adapter = NotificationAdapter(notificationList)
+                    val adapter = NotificationAdapter(
+                        notificationList
+                    )
 
                     val mLayoutManager = LinearLayoutManager(applicationContext)
                     mLayoutManager.reverseLayout = true

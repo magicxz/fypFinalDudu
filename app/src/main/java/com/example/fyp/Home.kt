@@ -1,33 +1,22 @@
 package com.example.fyp
 
-import android.app.ProgressDialog
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.view.WindowManager
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.RelativeLayout
 import android.widget.Toast
-import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
-import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
+import com.example.fyp.adapter.PageAdapter
+import com.example.fyp.model.Address
+import com.example.fyp.model.Users
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.squareup.picasso.Picasso
-import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.android.synthetic.main.header.*
-import kotlinx.android.synthetic.main.header.view.*
 import kotlinx.android.synthetic.main.home.*
-import kotlinx.android.synthetic.main.home.view.*
-import kotlinx.android.synthetic.main.login.*
-import kotlinx.android.synthetic.main.profile.*
 
 class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -61,7 +50,8 @@ class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListene
             drawerLayout.openDrawer(GravityCompat.START)
         }
 
-        viewPager.adapter = PageAdapter(supportFragmentManager)
+        viewPager.adapter =
+            PageAdapter(supportFragmentManager)
         tab.setupWithViewPager(viewPager)
 
         val menu = navBar.menu

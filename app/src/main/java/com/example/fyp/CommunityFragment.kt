@@ -1,40 +1,18 @@
 package com.example.fyp
 
-import android.app.Activity
-import android.app.AlertDialog
-import android.app.ProgressDialog
-import android.content.ContentResolver
 import android.content.Context
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
-import android.os.Handler
-import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.PopupWindow
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.google.android.gms.tasks.Task
-import com.google.firebase.auth.FirebaseAuth
+import com.example.fyp.adapter.CommunityAdapter
+import com.example.fyp.model.Post
 import com.google.firebase.database.*
-import com.google.firebase.storage.StorageReference
-import com.google.firebase.storage.StorageTask
-import com.google.firebase.storage.UploadTask
-import kotlinx.android.synthetic.main.add_community.*
-import kotlinx.android.synthetic.main.add_community.view.*
 import kotlinx.android.synthetic.main.fragment_community.*
 import kotlinx.android.synthetic.main.fragment_community.view.*
-import kotlinx.android.synthetic.main.load_post.*
-import java.io.IOException
-import java.time.LocalDateTime
-import java.time.ZoneId
-import java.time.format.DateTimeFormatter
-import kotlin.system.exitProcess
 
 class CommunityFragment : Fragment(){
 
@@ -83,7 +61,8 @@ class CommunityFragment : Fragment(){
 
                     root.reCommunity.layoutManager = mLayoutManager
                     root.reCommunity.scrollToPosition(postlist.size-1)
-                    root.reCommunity.adapter = CommunityAdapter(postlist)
+                    root.reCommunity.adapter =
+                        CommunityAdapter(postlist)
                 }
             }
         })

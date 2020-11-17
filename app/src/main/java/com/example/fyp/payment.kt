@@ -4,10 +4,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import com.example.fyp.model.Address
+import com.example.fyp.model.Cart
+import com.example.fyp.model.Order
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_payment.*
-import kotlinx.android.synthetic.main.home.*
 import java.time.LocalDateTime
 import java.time.ZoneId
 import java.time.format.DateTimeFormatter
@@ -89,7 +91,16 @@ class payment : AppCompatActivity() {
                                 var sub = intent.getStringExtra("sub")
                                 var deliveryFee = intent.getStringExtra("DeliveryFee")
                                 Log.d("123", total.toString())
-                                val storeOrder = Order(orderId!!,getTime(),"pending",sub.toDouble(),deliveryFee.toDouble(),total.toDouble(),radioButton3.text.toString(),currentUser)
+                                val storeOrder = Order(
+                                    orderId!!,
+                                    getTime(),
+                                    "pending",
+                                    sub.toDouble(),
+                                    deliveryFee.toDouble(),
+                                    total.toDouble(),
+                                    radioButton3.text.toString(),
+                                    currentUser
+                                )
                                 ref.child(orderId).setValue(storeOrder)
                                 Toast.makeText(applicationContext,"Order Success!!!", Toast.LENGTH_LONG).show()
                             }
