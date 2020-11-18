@@ -18,6 +18,9 @@ class order_detail : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_order_detail)
 
+        back1.setOnClickListener {
+            this.finish()
+        }
 
         val currentUser = FirebaseAuth.getInstance().currentUser!!.uid
         ref = FirebaseDatabase.getInstance().getReference("Orders")

@@ -20,9 +20,6 @@ class CartDetail : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cart_detail)
 
-
-
-
         cart = mutableListOf()
 
         mRecyclerView = recyclerView1
@@ -49,15 +46,15 @@ class CartDetail : AppCompatActivity() {
 
                         subTotal += cartList.price.toDouble()* cartList.cartQuantity
 
-                        subtotal.text = subTotal.toString()
+                        subtotal.text = "RM " + String.format("%.2f",subTotal)
 
                         fee = subTotal*0.1
 
-                        deliveryFee.text = String.format("%.2f",fee)
+                        deliveryFee.text = "RM " + String.format("%.2f",fee)
 
                         total = subTotal + fee
 
-                        totalAmount.text = total.toString()
+                        totalAmount.text = "RM " + String.format("%.2f",total)
                         intent.putExtra("Total",totalAmount.text.toString())
                         intent.putExtra("sub",subtotal.text.toString())
                         intent.putExtra("DeliveryFee",deliveryFee.text.toString())
@@ -87,6 +84,10 @@ class CartDetail : AppCompatActivity() {
             //val intent = Intent(this,payment::class.java)
 
             startActivity(intent)
+        }
+
+        back1.setOnClickListener{
+            this.finish()
         }
     }
 }

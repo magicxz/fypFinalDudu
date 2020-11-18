@@ -58,6 +58,7 @@ class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListene
         if(currentUser == null) {
             menu.findItem(R.id.navProfile).setVisible(false)
             menu.findItem(R.id.navOrder).setVisible(false)
+            menu.findItem(R.id.navCart).setVisible(false)
             menu.findItem(R.id.navAddress).setVisible(false)
             menu.findItem(R.id.navNotification).setVisible(false)
             menu.findItem(R.id.navLogout).setVisible(false)
@@ -121,7 +122,7 @@ class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListene
 
     private fun displayName(){
         var currentUser=FirebaseAuth.getInstance().currentUser!!.uid
-        val usersRef = FirebaseDatabase.getInstance().getReference().child("Users").child(currentUser)
+        val usersRef = FirebaseDatabase.getInstance().getReference().child("Users")
 
         usersRef.addValueEventListener(object: ValueEventListener{
             override fun onCancelled(error: DatabaseError) {
@@ -130,9 +131,13 @@ class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListene
 
             override fun onDataChange(snapshot: DataSnapshot) {
                 if(snapshot.exists()){
-                    var user =snapshot.getValue(Users::class.java)
-                    username.text = user!!.username
-                    Picasso.get().load(user.image).into(userImage)
+                    for (j in snapshot.children) {
+                        if(j.child("uid").getValue().toString().equals(currentUser)) {
+                            val name = j.child("username").getValue().toString()
+                            username.text = name
+                            Picasso.get().load(j.child("image").getValue().toString()).into(userImage)
+                        }
+                    }
                 }
             }
         })

@@ -56,7 +56,6 @@ class ChangePassword : AppCompatActivity() {
                 val user=auth.currentUser
                 val credential = EmailAuthProvider
                     .getCredential(user!!.email!!, oldPass.text.toString())
-                //Log.d("changePW","${user.email}")
                 user?.reauthenticate(credential)
                     ?.addOnCompleteListener {
                         if(it.isSuccessful){
@@ -75,7 +74,6 @@ class ChangePassword : AppCompatActivity() {
                                             startActivity(Intent(this,Profile::class.java))
                                             this.finish()
                                         }
-                                        //Toast.makeText(this,"Password Changed", Toast.LENGTH_SHORT).show()
                                     }
                                 }
                         }else{

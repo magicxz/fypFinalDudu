@@ -74,6 +74,7 @@
         android:id="@+id/caption"
         android:layout_below="@+id/textmsg"
         android:hint="Write a caption..."
+        android:paddingLeft="10dp"
         android:gravity="top"
         android:textColor="@color/black"
         android:paddingTop="5dp"

@@ -63,6 +63,12 @@ class CommunityAdapter(val posts : MutableList<Post>): RecyclerView.Adapter<Comm
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
+        val currentUser = FirebaseAuth.getInstance().currentUser
+        if(currentUser == null){
+            val intent = Intent(holder.postDetail.context, Login::class.java)
+            holder.postDetail.context.startActivity(intent)
+        }
+
         holder.datetime.text = posts[position].datetime
         holder.content.text = posts[position].content
         var userId = posts[position].userId
@@ -95,6 +101,7 @@ class CommunityAdapter(val posts : MutableList<Post>): RecyclerView.Adapter<Comm
             }
         })
         Picasso.get().load(picture).into(holder.picture)
+
 
         val currentUserID = FirebaseAuth.getInstance().currentUser!!.uid
         query1 = FirebaseDatabase.getInstance().getReference("Like").child(postId!!).child(currentUserID)

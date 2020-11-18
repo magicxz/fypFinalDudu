@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.fyp.adapter.CommunityAdapter
 import com.example.fyp.model.Post
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.fragment_community.*
 import kotlinx.android.synthetic.main.fragment_community.view.*
@@ -26,6 +27,7 @@ class CommunityFragment : Fragment(){
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+
         val root: View = inflater.inflate(R.layout.fragment_community, container, false)
 
         postlist = mutableListOf()

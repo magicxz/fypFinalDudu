@@ -72,8 +72,7 @@ class LoadAddress : AppCompatActivity(){
         }
 
         back.setOnClickListener {
-            startActivity(Intent(this, Home::class.java))
-            //this.finish()
+            this.finish()
         }
     }
 }

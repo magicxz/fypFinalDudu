@@ -76,11 +76,8 @@ class DeliveryFragment : Fragment() {
                         //mRecyclerView = findViewById(R.id.recyclerview)
 
                         mRecyclerView.setHasFixedSize(true)
-
                         mRecyclerView.scrollToPosition(foodList.size-1)
-
                         mRecyclerView.layoutManager = LinearLayoutManager(context,RecyclerView.VERTICAL,false)
-
                         mRecyclerView.adapter =adapter
                     }
                 }

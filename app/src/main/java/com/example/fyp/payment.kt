@@ -10,6 +10,7 @@ import com.example.fyp.model.Order
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_payment.*
+import kotlinx.android.synthetic.main.activity_payment.placeOrder
 import java.time.LocalDateTime
 import java.time.ZoneId
 import java.time.format.DateTimeFormatter
@@ -33,6 +34,10 @@ class payment : AppCompatActivity() {
 
         addressList= mutableListOf()
         cartList= mutableListOf()
+
+        back1.setOnClickListener{
+            this.finish()
+        }
 
         ref1.addValueEventListener(object: ValueEventListener {
             override fun onCancelled(error: DatabaseError) {
@@ -66,6 +71,8 @@ class payment : AppCompatActivity() {
                 })
             }
         })
+
+
 
 
         placeOrder.setOnClickListener{
@@ -110,10 +117,7 @@ class payment : AppCompatActivity() {
             }else{
                 Toast.makeText(applicationContext,"Please select your payment method", Toast.LENGTH_LONG).show()
             }
-
         }
-
-
     }
     private fun getTime(): String {
 

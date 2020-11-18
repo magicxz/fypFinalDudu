@@ -40,7 +40,7 @@ class AddToCart : AppCompatActivity() {
 
         number.text = "1"
 
-        totalAmount1.text = price.toString()
+        totalAmount1.text = "RM " + price.toString()
 
         minus.setOnClickListener{
             if(!(number.text.toString().toInt().equals(1))){
@@ -55,6 +55,10 @@ class AddToCart : AppCompatActivity() {
             number.text = (number.text.toString().toInt()+1).toString()
             totalAmount1.text = (number.text.toString().toInt()*price.toDouble()).toString()
 
+        }
+        
+        back1.setOnClickListener {
+            this.finish()
         }
     }
 

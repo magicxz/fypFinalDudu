@@ -1,204 +1,241 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".order_detail">
+    tools:context=".order_detail"
+    android:background="@color/black">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="409dp"
-        android:layout_height="54dp"
-        android:background="?attr/colorPrimary"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/t2"
+    <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/t1"
-        android:layout_marginTop="12dp"
-        android:text="Your Order Number :"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView26" />
+        android:src="@drawable/ic_baseline_arrow_back"
+        android:id="@+id/back1"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="5dp"
+        android:adjustViewBounds="true"/>
 
     <TextView
-        android:id="@+id/orderid"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/t1"
-        android:layout_toRightOf="@+id/t2"
-        android:text="abc"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/t2"
-        app:layout_constraintStart_toEndOf="@+id/t2"
-        app:layout_constraintTop_toTopOf="@+id/t2" />
-
-    <TextView
-        android:id="@+id/t3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/t2"
-        android:layout_marginTop="20dp"
-        android:text="Delivery Address :"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/t2" />
-
-    <TextView
-        android:id="@+id/currentAddr"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/t2"
-        android:layout_toRightOf="@+id/t3"
-        android:text="abc"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/t3"
-        app:layout_constraintStart_toEndOf="@+id/t3"
-        app:layout_constraintTop_toTopOf="@+id/t3" />
-
-    <TextView
-        android:id="@+id/tt1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/t3"
-        android:layout_marginTop="20dp"
-        android:text="Payment Method :"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/t3" />
-
-    <TextView
-        android:id="@+id/paymentMethod"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/t3"
-        android:layout_toRightOf="@+id/tt1"
-        android:text="abc"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/tt1"
-        app:layout_constraintStart_toEndOf="@+id/tt1"
-        app:layout_constraintTop_toTopOf="@+id/tt1" />
-
-
-    <TextView
-        android:id="@+id/tt2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tt1"
-        android:layout_marginTop="20dp"
-        android:text="Status :"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tt1" />
-
-    <TextView
-        android:id="@+id/status"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tt1"
-        android:layout_toRightOf="@+id/tt2"
-        android:text="abc"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/tt2"
-        app:layout_constraintStart_toEndOf="@+id/tt2"
-        app:layout_constraintTop_toTopOf="@+id/tt2" />
-
-    <TextView
-        android:id="@+id/t4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tt2"
-        android:layout_marginTop="20dp"
-        android:text="SubTotal (RM) :"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tt2" />
-
-    <TextView
-        android:id="@+id/subtot"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tt2"
-        android:layout_toRightOf="@+id/t4"
-        android:text="abc"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/t4"
-        app:layout_constraintStart_toEndOf="@+id/t4"
-        app:layout_constraintTop_toTopOf="@+id/t4" />
-
-    <TextView
-        android:id="@+id/t5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/t4"
-        android:layout_marginTop="20dp"
-        android:text="Delivery Fee (RM) :"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/t4" />
-
-    <TextView
-        android:id="@+id/delifee"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/t4"
-        android:layout_toRightOf="@+id/t5"
-        android:text="abc"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/t5"
-        app:layout_constraintStart_toEndOf="@+id/t5"
-        app:layout_constraintTop_toTopOf="@+id/t5" />
-
-    <TextView
-        android:id="@+id/t6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/t5"
-        android:layout_marginTop="20dp"
-        android:text="Total Amount (RM) :"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/t5"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/total"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/t5"
-        android:layout_toRightOf="@+id/t6"
-        android:text="abc"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/t6"
-        app:layout_constraintStart_toEndOf="@+id/t6"
-        app:layout_constraintTop_toTopOf="@+id/t6" />
-
-    <TextView
-        android:id="@+id/textView26"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/od"
         android:text="Order Detail"
         android:textColor="@color/white"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/toolbar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_below="@+id/back1"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="10dp"
+        android:layout_centerHorizontal="true"/>
 
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/od"
+        android:layout_margin="15dp"
+        app:cardCornerRadius="10dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/t2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Your Order Id :"
+                android:textSize="17sp"
+                android:textColor="@color/red"
+                android:layout_marginLeft="10dp"/>
+
+            <TextView
+                android:id="@+id/orderid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/t2"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:text="abc"
+                android:textSize="17sp"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:id="@+id/t3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/orderid"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:text="Delivery Address :"
+                android:textSize="17sp"
+                android:textColor="@color/red"/>
+
+            <TextView
+                android:id="@+id/currentAddr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/t3"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:text="abc"
+                android:textSize="17sp"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:id="@+id/tt1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/currentAddr"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:text="Payment Method :"
+                android:textSize="17sp"
+                android:textColor="@color/red"/>
+
+            <TextView
+                android:id="@+id/paymentMethod"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tt1"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="10dp"
+                android:text="abc"
+                android:textSize="17sp"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:id="@+id/tt2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/paymentMethod"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:text="Status :"
+                android:textSize="17sp"
+                android:textColor="@color/red"/>
+
+            <TextView
+                android:id="@+id/status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tt2"
+                android:text="abc"
+                android:textSize="17sp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:id="@+id/tt3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/status"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:text="Remark :"
+                android:textSize="17sp"
+                android:textColor="@color/red"/>
+
+            <TextView
+                android:id="@+id/remark"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tt3"
+                android:text="abc"
+                android:textSize="17sp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:id="@+id/tt4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/remark"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:text="Order Date Time :"
+                android:textSize="17sp"
+                android:textColor="@color/red"/>
+
+            <TextView
+                android:id="@+id/orderdatetime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tt4"
+                android:text="abc"
+                android:textSize="17sp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:id="@+id/t4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/orderdatetime"
+                android:layout_marginTop="10dp"
+                android:text="SubTotal (RM) :"
+                android:textSize="17sp"
+                android:layout_marginLeft="10dp"
+                android:textColor="@color/red"/>
+
+            <TextView
+                android:id="@+id/subtot"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/t4"
+                android:text="abc"
+                android:textSize="17sp"
+                android:textColor="@color/black"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"/>
+
+            <TextView
+                android:id="@+id/t5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/subtot"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:text="Delivery Fee (RM) :"
+                android:textSize="17sp"
+                android:textColor="@color/red"/>
+
+            <TextView
+                android:id="@+id/delifee"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/t5"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:text="abc"
+                android:textSize="17sp"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/t6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/delifee"
+                android:layout_marginTop="10dp"
+                android:text="Total Amount (RM) :"
+                android:textSize="17sp"
+                android:textColor="@color/red"
+                android:layout_marginLeft="10dp"/>
+
+            <TextView
+                android:id="@+id/total"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/t6"
+                android:text="abc"
+                android:textSize="17sp"
+                android:textColor="@color/black"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="10dp"/>
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>
