@@ -1,8 +1,11 @@
 package com.example.fyp
 
 import android.app.AlertDialog
+import android.app.Dialog
 import android.app.ProgressDialog
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
 import android.view.WindowManager
@@ -14,6 +17,7 @@ import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.change_password.*
 
 class ChangePassword : AppCompatActivity() {
+    lateinit var dialog: Dialog
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.change_password)
@@ -33,7 +37,8 @@ class ChangePassword : AppCompatActivity() {
 
     private fun changePassword() {
         var auth= FirebaseAuth.getInstance()
-        val dialogBuilder = AlertDialog.Builder(this)
+        dialog = Dialog(this)
+        dialog.setContentView(R.layout.okalertbox)
 
         if(oldPass.text.toString().isEmpty()){
             oldPass.error="Please enter current password"
@@ -63,17 +68,14 @@ class ChangePassword : AppCompatActivity() {
                                 ?.addOnCompleteListener{task ->
                                     if(task.isSuccessful){
                                         progressDialog.dismiss()
-                                        dialogBuilder.setView(R.layout.okalertbox)
-                                        val dialog = dialogBuilder.create()
-                                        dialog.setTitle("Change Password")
-                                        dialog.show()
-
                                         val ok = dialog.findViewById<Button>(R.id.ok)
                                         ok.setOnClickListener {
                                             dialog.dismiss()
-                                            startActivity(Intent(this,Profile::class.java))
-                                            this.finish()
+                                            startActivity(Intent(this,Home::class.java))
                                         }
+                                        dialog.setCancelable(true)
+                                        dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+                                        dialog.show()
                                     }
                                 }
                         }else{

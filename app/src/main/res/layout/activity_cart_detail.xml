@@ -45,6 +45,25 @@
         android:background="@color/black"
         android:layout_below="@+id/r1">
 
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:id="@+id/imgcart"
+            android:src="@drawable/addcart"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="170dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/nocart"
+            android:text="Add your cart now !!"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:layout_below="@id/imgcart"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView1"
         android:layout_width="match_parent"
@@ -64,7 +83,8 @@
         android:layout_marginTop="15dp"
         android:text="Subtotal :"
         android:textSize="20sp"
-        android:textColor="@color/white"/>
+        android:textColor="@color/white"
+        android:layout_marginLeft="28dp"/>
 
     <TextView
         android:id="@+id/subtotal"
@@ -75,7 +95,7 @@
         android:textSize="20sp"
         android:textStyle="bold"
         android:layout_toRightOf="@+id/textView6"
-        android:layout_marginLeft="70dp"
+        android:layout_marginLeft="50dp"
         android:textColor="@color/white"/>
 
     <TextView
@@ -99,7 +119,7 @@
             android:textColor="@color/white"
             android:layout_below="@+id/subtotal"
             android:layout_toRightOf="@+id/textView8"
-            android:layout_marginLeft="42dp"/>
+            android:layout_marginLeft="50dp"/>
 
     <TextView
         android:id="@+id/textView9"
@@ -109,7 +129,8 @@
         android:text="Total :"
         android:textSize="20sp"
         android:layout_below="@+id/textView8"
-        android:textColor="@color/white"/>
+        android:textColor="@color/white"
+        android:layout_marginLeft="57dp"/>
 
     <TextView
         android:id="@+id/totalAmount"
@@ -122,7 +143,7 @@
         android:textColor="@color/white"
         android:layout_below="@+id/deliveryFee"
         android:layout_toRightOf="@+id/textView9"
-        android:layout_marginLeft="100dp"/>
+        android:layout_marginLeft="50dp"/>
         </RelativeLayout>
 
         <Button

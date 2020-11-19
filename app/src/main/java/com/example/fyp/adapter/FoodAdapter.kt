@@ -30,10 +30,11 @@ class FoodAdapter (var foodDetail: MutableList<Food>):
 
         holder.image1.setOnClickListener{
             val intent = Intent(holder.name1.context, AddToCart::class.java)
-            intent.putExtra("DetailId",foodDetail[position].DetailId)
+            intent.putExtra("DetailId",foodDetail[position].detailId)
             intent.putExtra("Name",foodDetail[position].name)
             intent.putExtra("Price",foodDetail[position].price.toString())
             intent.putExtra("Image",foodDetail[position].image)
+            intent.putExtra("FoodId",foodDetail[position].foodId)
 
             holder.name1.context.startActivity(intent)
         }

@@ -142,8 +142,8 @@
                     android:textSize="20sp"
                     android:layout_below="@+id/minus"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/black"
-                    android:layout_marginTop="20dp"/>
+                    android:textColor="@color/red"
+                    android:layout_marginTop="30dp"/>
 
                 <EditText
                     android:layout_width="match_parent"
@@ -170,23 +170,10 @@
                     android:textColor="@color/black"/>
 
                 <TextView
-                    android:id="@+id/textView20"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_toRightOf="@+id/textView19"
-                    android:text="RM"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    android:layout_below="@+id/remark"
-                    android:textColor="@color/black"/>
-
-                <TextView
                     android:id="@+id/totalAmount1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_toRightOf="@+id/textView20"
+                    android:layout_toRightOf="@+id/textView19"
                     android:layout_marginLeft="5dp"
                     android:layout_marginTop="5dp"
                     android:text="TextView"

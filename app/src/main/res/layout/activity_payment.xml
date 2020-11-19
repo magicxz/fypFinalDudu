@@ -73,14 +73,31 @@
                         android:textColor="@color/black"
                         android:layout_marginLeft="10dp"/>
 
+                    <RadioGroup
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/ra1"
+                        android:layout_below="@+id/textView10">
+
                     <RadioButton
                         android:id="@+id/radioButton3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:checked="false"
                         android:text="Cash On Delivery"
-                        android:layout_below="@+id/textView10"
+                        android:textSize="15dp"
                         android:layout_marginTop="10dp"/>
+
+                    <RadioButton
+                        android:id="@+id/paypal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="false"
+                        android:text="Paypal"
+                        android:textSize="15dp"
+                        android:layout_below="@+id/radioButton3"
+                        android:layout_marginTop="10dp"/>
+                    </RadioGroup>
 
                     <TextView
                         android:id="@+id/textView22"
@@ -91,25 +108,48 @@
                         android:textStyle="bold"
                         android:textColor="@color/black"
                         android:layout_marginLeft="10dp"
-                        android:layout_below="@+id/radioButton3"
+                        android:layout_below="@+id/ra1"
                         android:layout_marginTop="50dp"/>
 
                     <TextView
                         android:id="@+id/textView11"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="TextView"
+                        android:hint="Add your address first.."
                         android:textSize="17sp"
                         android:textStyle="bold"
                         android:layout_below="@+id/textView22"
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="5dp"/>
 
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textTotal"
+                        android:text="Total Amount :"
+                        android:textSize="20sp"
+                        android:textColor="@color/black"
+                        android:layout_below="@+id/textView11"
+                        android:layout_marginTop="40dp"
+                        android:layout_marginLeft="10dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/payAmount"
+                        android:text="0.0"
+                        android:layout_toRightOf="@+id/textTotal"
+                        android:textSize="20sp"
+                        android:textColor="@color/black"
+                        android:layout_below="@+id/textView11"
+                        android:layout_marginTop="40dp"
+                        android:layout_marginLeft="5dp"/>
+
                     <Button
-                        android:id="@+id/placeOrder"
+                        android:id="@+id/payment"
                         android:layout_width="200dp"
                         android:layout_height="40dp"
-                        android:layout_marginTop="50dp"
+                        android:layout_marginTop="100dp"
                         android:text="Place Order"
                         android:layout_centerHorizontal="true"
                         android:layout_below="@+id/textView11"

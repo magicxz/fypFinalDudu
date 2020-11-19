@@ -31,10 +31,9 @@ class ReFoodAdapter(var food: MutableList<ReFood>):
 
         holder.image.setOnClickListener{
             val intent = Intent(holder.name.context, FoodDetail::class.java)
-            intent.putExtra("foodId",food[position].foodId)
+            intent.putExtra("DetailId",food[position].detailId)
             intent.putExtra("Name",food[position].name)
             intent.putExtra("Image",food[position].image)
-
 
             holder.name.context.startActivity(intent)
         }

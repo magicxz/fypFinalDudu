@@ -3,9 +3,9 @@ package com.example.fyp.adapter
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
-import com.example.fyp.CommunityFragment
-import com.example.fyp.DeliveryFragment
-import com.example.fyp.RestaurantFragment
+import com.example.fyp.fragment.CommunityFragment
+import com.example.fyp.fragment.DeliveryFragment
+import com.example.fyp.fragment.RestaurantFragment
 
 class PageAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
     override fun getItem(position: Int): Fragment {

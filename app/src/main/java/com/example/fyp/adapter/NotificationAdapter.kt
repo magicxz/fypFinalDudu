@@ -107,12 +107,6 @@ class NotificationAdapter(var notification : MutableList<Notification>) : Recycl
                             Post::class.java)
                         postList.add(post!!)
                         CountOrder.getPost = post
-                        /*val postPhoto = p0.child("postImage").getValue().toString()
-                        val datetime = p0.child("datetime").getValue().toString()
-                        val content = p0.child("content").getValue().toString()
-                        intent.putExtra("PostPhoto",postPhoto)
-                        intent.putExtra("DateTime",datetime)
-                        intent.putExtra("Content",content)*/
 
                         //Post ID de user
                         query = FirebaseDatabase.getInstance().getReference("Users")
@@ -129,12 +123,6 @@ class NotificationAdapter(var notification : MutableList<Notification>) : Recycl
                                     for (h in p0.children) {
                                         val user = h.getValue(Users::class.java)
                                         CountOrder.getUser = user!!
-                                        /*val userId = p0.child("uid").getValue().toString()
-                                        val username = p0.child("username").getValue().toString()
-                                        val profileImage = p0.child("image").getValue().toString()
-                                        intent.putExtra("UserId",userId)
-                                        intent.putExtra("Username",username)
-                                        intent.putExtra("ProfileImage",profileImage)*/
 
                                         val intent = Intent(holder.notiback.context,
                                             PostDetails::class.java)
@@ -153,7 +141,6 @@ class NotificationAdapter(var notification : MutableList<Notification>) : Recycl
                     }
                 }
             })
-            //holder.notiback.context.startActivity(intent)
 
 
             Timer("SettingUp", false).schedule(1500) {

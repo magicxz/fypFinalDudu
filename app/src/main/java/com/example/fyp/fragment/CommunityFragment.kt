@@ -1,4 +1,4 @@
-package com.example.fyp
+package com.example.fyp.fragment
 
 import android.content.Context
 import android.content.Intent
@@ -8,9 +8,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.fyp.AddCommunity
+import com.example.fyp.R
 import com.example.fyp.adapter.CommunityAdapter
 import com.example.fyp.model.Post
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.fragment_community.*
 import kotlinx.android.synthetic.main.fragment_community.view.*
@@ -74,7 +75,7 @@ class CommunityFragment : Fragment(){
         super.onViewCreated(view, savedInstanceState)
 
         addCommunity.setOnClickListener {
-            val intent =Intent(activity,AddCommunity::class.java)
+            val intent =Intent(activity, AddCommunity::class.java)
             startActivity(intent)
         }
 

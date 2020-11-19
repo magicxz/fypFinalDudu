@@ -1,4 +1,4 @@
-package com.example.fyp
+package com.example.fyp.fragment
 
 import android.content.ActivityNotFoundException
 import android.content.Intent
@@ -11,7 +11,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.google.firebase.auth.FirebaseAuth
+import com.example.fyp.R
 
 class RestaurantFragment : Fragment() {
 

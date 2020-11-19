@@ -2,6 +2,8 @@ package com.example.fyp
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
+import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
@@ -16,6 +18,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.header.*
+import kotlinx.android.synthetic.main.header.view.*
 import kotlinx.android.synthetic.main.home.*
 
 class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -64,12 +67,11 @@ class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListene
             menu.findItem(R.id.navLogout).setVisible(false)
         }else{
             displayAddress()
-            displayName()
+            //displayName()
         }
         cart.setOnClickListener {
             startActivity(Intent(this, CartDetail::class.java))
         }
-
     }
 
     override fun onBackPressed() {
@@ -93,7 +95,7 @@ class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListene
                 startActivity(Intent(this, CartDetail::class.java))
             }
             R.id.navOrder -> {
-                startActivity(Intent(this, order_detail::class.java))
+                startActivity(Intent(this, LoadOrder::class.java))
             }
             R.id.navAddress -> {
                 startActivity(Intent(this, LoadAddress::class.java))
@@ -120,9 +122,16 @@ class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListene
         startActivity(Intent(this,Register::class.java))
     }
 
-    private fun displayName(){
+    override fun onStart() {
+        super.onStart()
+
+        val currentUser=FirebaseAuth.getInstance().currentUser
+    }
+
+    /*private fun displayName(){
         var currentUser=FirebaseAuth.getInstance().currentUser!!.uid
-        val usersRef = FirebaseDatabase.getInstance().getReference().child("Users")
+        val usersRef = FirebaseDatabase.getInstance().getReference("Users")
+        var abc = 0
 
         usersRef.addValueEventListener(object: ValueEventListener{
             override fun onCancelled(error: DatabaseError) {
@@ -130,18 +139,22 @@ class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListene
             }
 
             override fun onDataChange(snapshot: DataSnapshot) {
-                if(snapshot.exists()){
-                    for (j in snapshot.children) {
-                        if(j.child("uid").getValue().toString().equals(currentUser)) {
-                            val name = j.child("username").getValue().toString()
-                            username.text = name
-                            Picasso.get().load(j.child("image").getValue().toString()).into(userImage)
+                if(abc == 0) {
+
+                    if (snapshot.exists()) {
+                        for (j in snapshot.children) {
+                            if (j.child("uid").getValue().toString().equals(currentUser)) {
+                                val name = j.child("username").getValue().toString()
+                                Log.d("abc", "name ="+name)
+
+                            }
                         }
                     }
+                    abc++
                 }
             }
         })
-    }
+    }*/
 
     private fun displayAddress(){
         var currentUser=FirebaseAuth.getInstance().currentUser!!.uid

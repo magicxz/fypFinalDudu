@@ -1,4 +1,4 @@
-package com.example.fyp
+package com.example.fyp.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,6 +8,7 @@ import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.fyp.R
 import com.example.fyp.adapter.ReFoodAdapter
 import com.example.fyp.model.ReFood
 import com.google.firebase.database.*

@@ -1,5 +1,6 @@
 package com.example.fyp.adapter
 
+import android.app.AlertDialog
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,26 +22,22 @@ class cartAdapter (var cart: MutableList<Cart>):
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.name1.text = cart[position].name
-        holder.price1.text = cart[position].price.toString()
+        holder.name1.text = cart[position].foodname
+        holder.price1.text = "RM " + cart[position].price.toString()
         holder.quantity.text = cart[position].cartQuantity.toString()
 
         Picasso.get().load(cart[position].image).into(holder.image1)
 
         holder.close.setOnClickListener {
             val cartId = cart[position].cartId
-            FirebaseDatabase.getInstance().getReference("Carts").child(cartId).removeValue()
+            val dialogBuilder = AlertDialog.Builder(holder.close.context)
+                .setTitle("Remove Cart Item").setIcon(R.drawable.icon).setPositiveButton("Yes"){ _, _ ->
+                    FirebaseDatabase.getInstance().getReference("Carts").child(cartId).removeValue()
+                }
+                .setNegativeButton("No"){_, _ ->
+                }.create()
+            dialogBuilder.show()
         }
-
-        /* holder.image1.setOnClickListener{
-             val intent = Intent(holder.name1.context, payment::class.java)
-             intent.putExtra("Name",cart[position].name)
-             intent.putExtra("Price",cart[position].price.toString())
-             intent.putExtra("quantity",cart[position].cartQuantity)
-             intent.putExtra("Image",cart[position].image)
-
-             holder.name1.context.startActivity(intent)
-         }*/
     }
 
     override fun getItemCount(): Int {
@@ -53,6 +50,5 @@ class cartAdapter (var cart: MutableList<Cart>):
         val price1: TextView = itemView.findViewById(R.id.price1)
         val image1: ImageView = itemView.findViewById((R.id.image2))
         val close : ImageView = itemView.findViewById(R.id.deleteCart)
-
     }
 }

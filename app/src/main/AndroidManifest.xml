@@ -11,6 +11,7 @@
         android:theme="@style/BlackTheme"
         android:largeHeap="true">
         <activity android:name=".order_detail"/>
+        <activity android:name=".LoadOrder"/>
         <activity android:name=".payment" />
         <activity android:name=".AddToCart" />
         <activity android:name=".FoodDetail" />
@@ -34,6 +35,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

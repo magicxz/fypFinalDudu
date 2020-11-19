@@ -41,9 +41,7 @@ class LoadNotification : AppCompatActivity() {
                         notificationList.add(notification!!)
                     }
 
-                    val adapter = NotificationAdapter(
-                        notificationList
-                    )
+                    val adapter = NotificationAdapter(notificationList)
 
                     val mLayoutManager = LinearLayoutManager(applicationContext)
                     mLayoutManager.reverseLayout = true

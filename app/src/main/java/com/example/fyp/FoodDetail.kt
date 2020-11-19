@@ -30,7 +30,7 @@ class FoodDetail : AppCompatActivity() {
 
         var intent = intent
 
-        val id = intent.getStringExtra("foodId")
+        val id = intent.getStringExtra("DetailId")
         val title = intent.getStringExtra("Name")
         val image = intent.getStringExtra("Image")
 
@@ -61,7 +61,7 @@ class FoodDetail : AppCompatActivity() {
                     for(h in dataSnapshot.children){
 
 
-                        if(h.child("foodId").getValue().toString().equals(id)){
+                        if(h.child("detailId").getValue().toString().equals(id)){
                             val foodDetail =h.getValue(Food::class.java)
                             foodDetailList.add(foodDetail!!)
                             //Toast.makeText(this@FoodDetail,id,Toast.LENGTH_SHORT).show()

@@ -18,11 +18,20 @@ class order_detail : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_order_detail)
 
+        orderid.text = intent.getStringExtra("OrderId")
+        paymentMethod.text = intent.getStringExtra("PaymentMethod")
+        status.text = intent.getStringExtra("Status")
+        //subtot.text = intent.getStringExtra("SubTotal")
+        //delifee.text = intent.getStringExtra("DeliveryFee")
+        //total.text = intent.getStringExtra("TotalAmount")
+        orderdatetime.text = intent.getStringExtra("OrderDateTime")
+        val userId = intent.getStringExtra("UserId")
+
+
         back1.setOnClickListener {
             this.finish()
         }
 
-        val currentUser = FirebaseAuth.getInstance().currentUser!!.uid
         ref = FirebaseDatabase.getInstance().getReference("Orders")
 
         ref.addValueEventListener(object : ValueEventListener {
@@ -33,56 +42,55 @@ class order_detail : AppCompatActivity() {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()){
                     for(h in snapshot.children){
-                        if(h.child("userId").getValue().toString().equals(currentUser)){
-                            orderid.text = h.child("orderId").getValue().toString()
-                            paymentMethod.text = h.child("paymentMethod").getValue().toString()
-                            status.text = h.child("status").getValue().toString()
-                            subtot.text = h.child("subtotal").getValue().toString()
-                            delifee.text = h.child("deliveryfee").getValue().toString()
-                            total.text = h.child("totalAmount").getValue().toString()
+                        if(h.child("userId").getValue().toString().equals(userId)){
+                            val sub = h.child("subtotal").getValue().toString()
+                            val deli = h.child("deliveryfee").getValue().toString()
+                            val tot = h.child("totalAmount").getValue().toString()
+                            subtot.text = sub
+                            delifee.text = deli
+                            total.text = tot
                         }
                     }
                 }
             }
         })
 
-        addressList = mutableListOf()
+        ref = FirebaseDatabase.getInstance().getReference("Address")
 
-        ref2 = FirebaseDatabase.getInstance().getReference().child("Address")
-        ref1 = FirebaseDatabase.getInstance().getReference().child("Users")
-
-        ref1.addValueEventListener(object: ValueEventListener {
+        ref.addValueEventListener(object : ValueEventListener {
             override fun onCancelled(error: DatabaseError) {
                 TODO("Not yet implemented")
             }
 
             override fun onDataChange(snapshot: DataSnapshot) {
-                if (snapshot.exists()) {
-                    addressList.clear()
-                    for (h in snapshot.children) {
-                        val u = h.getValue(Address::class.java)
-                        addressList.add(u!!)
-                    }
-                }
-                ref2.addValueEventListener(object: ValueEventListener {
-                    override fun onCancelled(error: DatabaseError) {
-                        TODO("Not yet implemented")
-                    }
-
-                    override fun onDataChange(snapshot: DataSnapshot) {
-                        if (snapshot.exists()) {
-                            addressList.clear()
-                            for (j in snapshot.children) {
-                                if(j.child("userId").getValue().toString().equals(currentUser)){
-                                    currentAddr.text = j.child("addressLine").getValue().toString()
-                                }
-                            }
+                if (snapshot.exists()){
+                    for(h in snapshot.children){
+                        if(h.child("userId").getValue().toString().equals(userId)){
+                            val address = h.child("addressLine").getValue().toString()
+                            currentAddr.text = address
                         }
                     }
-                })
+                }
             }
         })
 
+        ref = FirebaseDatabase.getInstance().getReference("Carts")
 
+        ref.addValueEventListener(object : ValueEventListener {
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (snapshot.exists()){
+                    for(h in snapshot.children){
+                        if(h.child("userId").getValue().toString().equals(userId)){
+                            val r = h.child("remark").getValue().toString()
+                            remark.text = r
+                        }
+                    }
+                }
+            }
+        })
     }
 }
