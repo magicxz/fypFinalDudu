@@ -73,6 +73,7 @@ class OrderAdapter(var order : MutableList<Order>): RecyclerView.Adapter<OrderAd
                                         val intent = Intent(holder.orderBackground.context,
                                             order_detail::class.java)
                                         intent.putExtra("OrderId", CountOrder.getOrder.orderId)
+                                        Log.d("abc123",CountOrder.getOrder.orderId )
                                         intent.putExtra("PaymentMethod", CountOrder.getOrder.paymentMethod)
                                         intent.putExtra("Status", CountOrder.getOrder.status)
                                         intent.putExtra("OrderDateTime", CountOrder.getOrder.orderDateTime)
@@ -87,7 +88,6 @@ class OrderAdapter(var order : MutableList<Order>): RecyclerView.Adapter<OrderAd
                         })
                     }
                 }
-
             })
         }
     }

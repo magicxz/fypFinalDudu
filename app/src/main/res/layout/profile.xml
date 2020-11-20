@@ -168,7 +168,8 @@
                             android:id="@+id/ePhone"
                             android:textColor="@color/black"
                             android:layout_gravity="center_horizontal"
-                            android:drawableLeft="@drawable/ic_black_phone" />
+                            android:drawableLeft="@drawable/ic_black_phone"
+                            android:inputType="number"/>
 
                         <TextView
                             android:layout_width="wrap_content"

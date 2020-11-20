@@ -74,11 +74,11 @@ class AddToCart : AppCompatActivity() {
         dialog.setContentView(R.layout.confirmation)
         val yes = dialog.findViewById<Button>(R.id.yesBtn)
         val no = dialog.findViewById<Button>(R.id.cancelBtn)
-        val id = intent.getStringExtra("DetailId")
+        val id = intent.getStringExtra("FoodId")
         val img = dialog.findViewById<ImageView>(R.id.img1)
         val fname = dialog.findViewById<TextView>(R.id.foodname)
 
-        val ref1 = FirebaseDatabase.getInstance().getReference("Food").orderByChild("DetailId").equalTo(id)
+        val ref1 = FirebaseDatabase.getInstance().getReference("Food").orderByChild("foodId").equalTo(id)
 
         ref1.addValueEventListener(object : ValueEventListener{
             override fun onCancelled(error: DatabaseError) {

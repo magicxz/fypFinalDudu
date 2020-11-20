@@ -11,6 +11,7 @@
         android:theme="@style/BlackTheme"
         android:largeHeap="true">
         <activity android:name=".order_detail"/>
+        <activity android:name=".VerifyEmail"/>
         <activity android:name=".LoadOrder"/>
         <activity android:name=".payment" />
         <activity android:name=".AddToCart" />

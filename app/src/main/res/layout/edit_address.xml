@@ -52,7 +52,8 @@
                 android:layout_below="@+id/image1"
                 android:layout_toRightOf="@+id/texttype"
                 android:hint="Eg, Home"
-                android:layout_marginLeft="5dp"/>
+                android:layout_marginLeft="5dp"
+                android:inputType="text"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -71,7 +72,7 @@
                 android:id="@+id/editLine"
                 android:textColor="@color/black"
                 android:layout_below="@+id/text1"
-                android:layout_marginLeft="5dp"/>
+                android:layout_marginLeft="5dp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -109,7 +110,8 @@
                 android:id="@+id/editState"
                 android:textColor="@color/black"
                 android:layout_below="@+id/text2"
-                android:layout_marginLeft="5dp"/>
+                android:layout_marginLeft="5dp"
+                android:inputType="text"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -130,7 +132,8 @@
                 android:textColor="@color/black"
                 android:layout_below="@+id/text2"
                 android:layout_marginLeft="25dp"
-                android:layout_toRightOf="@+id/editState"/>
+                android:layout_toRightOf="@+id/editState"
+                android:inputType="number"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -149,7 +152,8 @@
                 android:id="@+id/editCity"
                 android:textColor="@color/black"
                 android:layout_below="@+id/text3"
-                android:layout_marginLeft="5dp"/>
+                android:layout_marginLeft="5dp"
+                android:inputType="text"/>
 
             <Button
                 android:layout_width="200dp"

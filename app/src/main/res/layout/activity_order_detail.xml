@@ -27,7 +27,7 @@
         android:layout_below="@+id/back1"
         android:layout_marginTop="15dp"
         android:layout_marginLeft="10dp"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true" />
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -49,6 +49,14 @@
                 android:textSize="17sp"
                 android:textColor="@color/red"
                 android:layout_marginLeft="10dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/fodname"
+                android:text="foodname"
+                android:textColor="@color/black"
+                android:visibility="gone"/>
 
             <TextView
                 android:id="@+id/orderid"
@@ -143,7 +151,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tt3"
-                android:text="abc"
+                android:text="no spicy"
                 android:textSize="17sp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="5dp"

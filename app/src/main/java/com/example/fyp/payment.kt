@@ -127,10 +127,11 @@ class payment : AppCompatActivity() {
 
                                             val foodId = cart.foodId
                                             val qty = cart.cartQuantity
+                                            val rema = cart.remark
                                             var orderDetailId = ref3.push().key
 
                                             val storeOrderDetail =
-                                                orderDetail(orderDetailId!!, foodId, orderId!!, qty)
+                                                orderDetail(orderDetailId!!, foodId, orderId!!, qty,rema)
                                             ref3.child(orderDetailId).setValue(storeOrderDetail)
                                         }
                                         for (x in cartList) {
@@ -152,6 +153,8 @@ class payment : AppCompatActivity() {
                                 }
                             }
                         })
+                        val storeOrder = Order(orderId!!, getTime(), "pending", sub.toDouble(), deliveryFee.toDouble(), total.toDouble(), radioButton3.text.toString(), currentUser)
+                        ref.child(orderId).setValue(storeOrder)
                     }else if(paypal.isChecked){
                         var total = intent.getStringExtra("Total")
                         config=PayPalConfiguration().environment(PayPalConfiguration.ENVIRONMENT_SANDBOX).clientId(UserInfo.clientId)
@@ -174,8 +177,6 @@ class payment : AppCompatActivity() {
                     dialog.dismiss()
                     Toast.makeText(applicationContext, "Please add your address first !!", Toast.LENGTH_SHORT).show()
                 }
-                val storeOrder = Order(orderId!!, getTime(), "pending", sub.toDouble(), deliveryFee.toDouble(), total.toDouble(), radioButton3.text.toString(), currentUser)
-                ref.child(orderId).setValue(storeOrder)
             }
             cancel.setOnClickListener {
                 dialog.dismiss()
@@ -196,6 +197,9 @@ class payment : AppCompatActivity() {
                 val orderId = ref.push().key
                 val ref3 = FirebaseDatabase.getInstance().getReference("OrderDetails")
                 val ref1 = FirebaseDatabase.getInstance().getReference("Carts").orderByChild("userId").equalTo(currentUser)
+                var total = intent.getStringExtra("Total")
+                var sub = intent.getStringExtra("sub")
+                var deliveryFee = intent.getStringExtra("DeliveryFee")
                 ref1.addValueEventListener(object : ValueEventListener {
                     override fun onCancelled(error: DatabaseError) {
                         TODO("Not yet implemented")
@@ -211,10 +215,11 @@ class payment : AppCompatActivity() {
 
                                     val foodId = cart.foodId
                                     val qty = cart.cartQuantity
+                                    val rema = cart.remark
                                     var orderDetailId = ref3.push().key
 
                                     val storeOrderDetail =
-                                        orderDetail(orderDetailId!!, foodId, orderId!!, qty)
+                                        orderDetail(orderDetailId!!, foodId, orderId!!, qty,rema)
                                     ref3.child(orderDetailId).setValue(storeOrderDetail)
                                 }
                                 for (x in cartList) {
@@ -224,18 +229,12 @@ class payment : AppCompatActivity() {
                                 }
                             }
                             store++
-                            /*val ok = dialog1.findViewById<Button>(R.id.ok)
-                            ok.setOnClickListener {
-                                dialog1.dismiss()
-                                Toast.makeText(applicationContext, "Order Success!!!", Toast.LENGTH_SHORT).show()
-                                startActivity(Intent(applicationContext, Home::class.java))
-                            }
-                            dialog1.setCancelable(true)
-                            dialog1.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-                            dialog1.show()*/
                         }
                     }
                 })
+                dialog.dismiss()
+                val storeOrder = Order(orderId!!, getTime(), "paid", sub.toDouble(), deliveryFee.toDouble(), total.toDouble(), paypal.text.toString(), currentUser)
+                ref.child(orderId).setValue(storeOrder)
                 Toast.makeText(applicationContext, "Order Success!!!", Toast.LENGTH_SHORT).show()
                 val ok = dialog1.findViewById<Button>(R.id.ok)
                 ok.setOnClickListener {

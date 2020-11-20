@@ -66,7 +66,8 @@
         android:hint="                 Phone Number"
         android:textColorHint="@color/white"
         android:drawableLeft="@drawable/ic_outline_phone"
-        android:layout_below="@+id/rEmail"/>
+        android:layout_below="@+id/rEmail"
+        android:inputType="number"/>
 
     <RadioGroup
         android:layout_width="match_parent"

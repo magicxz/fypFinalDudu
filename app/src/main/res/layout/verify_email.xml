@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".VerifyEmail">
+
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="150dp"
+        android:id="@+id/check"
+        android:src="@drawable/ic_check"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="150dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textv"
+        android:text="Please verify your email first !"
+        android:textColor="@color/white"
+        android:layout_below="@+id/check"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:textSize="20dp"/>
+
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/backLogin"
+        android:text="Back to Login"
+        android:drawableRight="@drawable/ic_baseline_arrow_forward"
+        android:background="@drawable/custom_button"
+        android:layout_below="@+id/textv"
+        android:layout_marginTop="50dp"
+        android:layout_centerHorizontal="true"/>
+</RelativeLayout>
