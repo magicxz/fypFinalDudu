@@ -15,8 +15,7 @@ import com.google.android.libraries.places.widget.Autocomplete
 import com.google.android.libraries.places.widget.AutocompleteActivity
 import com.google.android.libraries.places.widget.model.AutocompleteActivityMode
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.add_address.*
 import java.util.*
 
@@ -78,6 +77,8 @@ class AddAddress : AppCompatActivity(){
         alertbox.setTitle("Error")
         alertbox.setIcon(R.mipmap.icon)
 
+        addressList = mutableListOf()
+
         val progressDialog = ProgressDialog(this)
 
         usersRef = FirebaseDatabase.getInstance().getReference("Address")
@@ -116,27 +117,48 @@ class AddAddress : AppCompatActivity(){
             val postcode = findViewById<EditText>(R.id.postcode)
             var addressId = usersRef.push().key.toString()
             val currentUserID = FirebaseAuth.getInstance().currentUser!!.uid
+            val ref = FirebaseDatabase.getInstance().getReference("Address")
 
-            val mapAddress = Address(
-                addressId,
-                addressType.text.toString(),
-                addressLine.text.toString(),
-                addressLine2.text.toString(),
-                city.text.toString(),
-                state.text.toString(),
-                postcode.text.toString(),
-                currentUserID
-            )
-
-            usersRef.child(addressId).setValue(mapAddress).addOnCompleteListener{task ->
-                if(task.isSuccessful){
-                    Toast.makeText(this,"Add Successful!!!",Toast.LENGTH_LONG).show()
-                    startActivity(Intent(this, LoadAddress::class.java))
-                    this.finish()
-                }else{
-                    Toast.makeText(this,"Add Fail...",Toast.LENGTH_LONG).show()
+            ref.addValueEventListener(object : ValueEventListener{
+                override fun onCancelled(error: DatabaseError) {
+                    TODO("Not yet implemented")
                 }
-            }
+
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    if (snapshot.exists()){
+                        for (h in snapshot.children){
+                            val address = h.getValue(Address::class.java)
+                            addressList.add(address!!)
+                            if (h.child("userId").getValue().toString().equals(currentUserID)){
+                                if (address.addressLine.equals(addressLine.text.toString())){
+                                    alertbox.setMessage("Address has already exists !!")
+                                    alertbox.show()
+                                }else{
+                                    val mapAddress = Address(
+                                        addressId,
+                                        addressType.text.toString(),
+                                        addressLine.text.toString(),
+                                        addressLine2.text.toString(),
+                                        city.text.toString(),
+                                        state.text.toString(),
+                                        postcode.text.toString(),
+                                        currentUserID
+                                    )
+
+                                    usersRef.child(addressId).setValue(mapAddress).addOnCompleteListener{task ->
+                                        if(task.isSuccessful){
+                                            Toast.makeText(applicationContext,"Add Successful!!!",Toast.LENGTH_LONG).show()
+                                            startActivity(Intent(applicationContext, LoadAddress::class.java))
+                                        }else{
+                                            Toast.makeText(applicationContext,"Add Fail...",Toast.LENGTH_LONG).show()
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            })
         }
     }
 }

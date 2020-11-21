@@ -190,6 +190,7 @@ class Profile : AppCompatActivity() {
                     mapProfileImg["image"] = url
                     usersRef!!.updateChildren(mapProfileImg)
                     progressDialog.dismiss()
+                    startActivity(Intent(this,Profile::class.java))
                     Toast.makeText(this,"Update Successful!!!",Toast.LENGTH_SHORT).show()
                 }
             }
