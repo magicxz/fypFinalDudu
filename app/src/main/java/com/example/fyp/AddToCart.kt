@@ -1,6 +1,7 @@
 package com.example.fyp
 
 import android.app.Dialog
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
@@ -40,9 +41,12 @@ class AddToCart : AppCompatActivity() {
         Picasso.get().load(image).into(imageView4)
 
         placeOrder.setOnClickListener{
-
-            placeOrder(name,price,image)
-
+            val currentUser = FirebaseAuth.getInstance().currentUser
+            if(currentUser == null){
+                startActivity(Intent(this, Login::class.java))
+            }else{
+                placeOrder(name,price,image)
+            }
         }
 
         number.text = "1"
@@ -70,6 +74,10 @@ class AddToCart : AppCompatActivity() {
     }
 
     private fun placeOrder(name :String, price: String, image:String) {
+        val currentUser = FirebaseAuth.getInstance().currentUser!!.uid
+
+
+
         dialog = Dialog(this)
         dialog.setContentView(R.layout.confirmation)
         val yes = dialog.findViewById<Button>(R.id.yesBtn)
@@ -101,7 +109,6 @@ class AddToCart : AppCompatActivity() {
         val ref = FirebaseDatabase.getInstance().getReference("Carts")
         var remark = findViewById<EditText>(R.id.remark)
         val cartId = ref.push().key
-        val currentUser = FirebaseAuth.getInstance().currentUser!!.uid
         val foodId = intent.getStringExtra("FoodId")
 
         if(remark.text.toString() == ""){

@@ -46,6 +46,28 @@ class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListene
             if(currentUser != null){
                 show.isVisible = true
                 show1.isVisible = false
+
+                var currentUser=FirebaseAuth.getInstance().currentUser!!.uid
+                val usersRef = FirebaseDatabase.getInstance().getReference("Users")
+
+                usersRef.addValueEventListener(object: ValueEventListener{
+                    override fun onCancelled(error: DatabaseError) {
+                        TODO("Not yet implemented")
+                    }
+
+                    override fun onDataChange(snapshot: DataSnapshot) {
+                        if (snapshot.exists()) {
+                            for (j in snapshot.children) {
+                                if (j.child("uid").getValue().toString().equals(currentUser)) {
+                                    val name = j.child("username").getValue().toString()
+                                    val img = j.child("image").getValue().toString()
+                                    yourName.text = name
+                                    Picasso.get().load(img).into(userImage)
+                                }
+                            }
+                        }
+                    }
+                })
             }else{
                 show.isVisible = false
                 show1.isVisible = true
@@ -131,7 +153,6 @@ class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListene
     /*private fun displayName(){
         var currentUser=FirebaseAuth.getInstance().currentUser!!.uid
         val usersRef = FirebaseDatabase.getInstance().getReference("Users")
-        var abc = 0
 
         usersRef.addValueEventListener(object: ValueEventListener{
             override fun onCancelled(error: DatabaseError) {
@@ -139,8 +160,6 @@ class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListene
             }
 
             override fun onDataChange(snapshot: DataSnapshot) {
-                if(abc == 0) {
-
                     if (snapshot.exists()) {
                         for (j in snapshot.children) {
                             if (j.child("uid").getValue().toString().equals(currentUser)) {
@@ -150,9 +169,7 @@ class Home : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListene
                             }
                         }
                     }
-                    abc++
                 }
-            }
         })
     }*/
 

@@ -46,7 +46,6 @@ class AddCommunity : AppCompatActivity() {
         getCount1()
 
         closePopup.setOnClickListener {
-            startActivity(Intent(this,Home::class.java))
             this.finish()
         }
 
@@ -87,7 +86,7 @@ class AddCommunity : AppCompatActivity() {
 
     private fun uploadPost(){
         val alertbox =AlertDialog.Builder(this)
-        alertbox.setTitle("Error")
+        alertbox.setTitle("Post Failed!")
         alertbox.setIcon(R.mipmap.icon)
 
         val progressDialog = ProgressDialog(this)
@@ -99,11 +98,12 @@ class AddCommunity : AppCompatActivity() {
         if(caption.text.toString().isEmpty()){
             alertbox.setMessage("Please enter your message...")
             alertbox.show()
-        }else{
+        }else if(uploadPic.drawable == null && !caption.text.toString().isEmpty()){
+            alertbox.setMessage("Please add an image...")
+            alertbox.show()
+        }else if(imageUri != null){
             val msg = caption.text.toString()
             val postId = usersRef.push().key.toString()
-
-            if(imageUri != null){
 
                 progressDialog.setTitle("Uploading...")
                 progressDialog.show()
@@ -139,15 +139,11 @@ class AddCommunity : AppCompatActivity() {
                         usersRef.child(postId).setValue(mapPost)
                             .addOnCompleteListener { task ->
                                 Toast.makeText(this,"Post Successful!!!",Toast.LENGTH_SHORT).show()
-                                startActivity(Intent(this,Home::class.java))
+                                this.finish()
                             }
                     }
                 }
-            }else{
-                progressDialog.dismiss()
-                Toast.makeText(applicationContext, "Failed", Toast.LENGTH_SHORT).show()
             }
-        }
     }
 
     private fun getTime(): String {

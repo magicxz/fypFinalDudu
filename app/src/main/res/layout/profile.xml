@@ -169,7 +169,8 @@
                             android:textColor="@color/black"
                             android:layout_gravity="center_horizontal"
                             android:drawableLeft="@drawable/ic_black_phone"
-                            android:inputType="number"/>
+                            android:inputType="phone"
+                            android:digits="0123456789"/>
 
                         <TextView
                             android:layout_width="wrap_content"

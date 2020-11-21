@@ -1,5 +1,6 @@
 package com.example.fyp
 
+import android.app.AlertDialog
 import android.app.ProgressDialog
 import android.content.Context
 import android.content.Intent
@@ -122,9 +123,14 @@ class Login : AppCompatActivity() {
                             finish()
                         } else {
                             progressDialog.dismiss()
-                            Toast.makeText(
-                                baseContext,"Please verify your email address.",
-                                Toast.LENGTH_LONG).show()
+                            val alertbox = AlertDialog.Builder(this)
+                            alertbox.setTitle("Error")
+                            alertbox.setIcon(R.mipmap.icon)
+                            alertbox.setNegativeButton("Close"){dialog, which ->
+                                dialog.dismiss()
+                            }
+                            alertbox.setMessage("Please verify your email first...")
+                            alertbox.show()
                             mAuth.signOut()
                         }
                     } else {

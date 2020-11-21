@@ -135,33 +135,13 @@
                 android:layout_marginTop="5dp"
                 android:textColor="@color/black"/>
 
-            <TextView
-                android:id="@+id/tt3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/status"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="10dp"
-                android:text="Remark :"
-                android:textSize="17sp"
-                android:textColor="@color/red"/>
 
-            <TextView
-                android:id="@+id/remark"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tt3"
-                android:text="no spicy"
-                android:textSize="17sp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="5dp"
-                android:textColor="@color/black"/>
 
             <TextView
                 android:id="@+id/tt4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/remark"
+                android:layout_below="@+id/status"
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="10dp"
                 android:text="Order Date Time :"

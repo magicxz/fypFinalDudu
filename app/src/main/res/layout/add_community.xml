@@ -37,7 +37,7 @@
         android:layout_width="200dp"
         android:layout_height="150dp"
         android:id="@+id/uploadPic"
-        android:src="@drawable/ic_outline_insert_photo"
+
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/imgView_line"
         android:layout_marginTop="20dp"/>

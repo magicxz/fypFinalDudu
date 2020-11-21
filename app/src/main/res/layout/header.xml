@@ -31,6 +31,25 @@
                 android:textStyle="italic|bold"
                 android:layout_below="@+id/img"
                 android:layout_alignParentRight="true"/>
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:id="@+id/userImage"
+                android:src="@drawable/profile"
+                android:layout_marginTop="50dp"
+                app:civ_border_width="0.5dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/yourName"
+                android:text="EXAMPLE"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:layout_marginLeft="8dp"
+                android:layout_below="@+id/userImage" />
         </RelativeLayout>
 
 

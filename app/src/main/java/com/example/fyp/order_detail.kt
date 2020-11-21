@@ -108,7 +108,7 @@ class order_detail : AppCompatActivity() {
             }
         })
 
-        ref = FirebaseDatabase.getInstance().getReference("Carts")
+        /*ref = FirebaseDatabase.getInstance().getReference("Carts")
 
         ref.addValueEventListener(object : ValueEventListener {
             override fun onCancelled(error: DatabaseError) {
@@ -125,6 +125,6 @@ class order_detail : AppCompatActivity() {
                     }
                 }
             }
-        })
+        })*/
     }
 }
