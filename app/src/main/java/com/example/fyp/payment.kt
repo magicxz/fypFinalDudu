@@ -89,6 +89,7 @@ class payment : AppCompatActivity() {
 
         dialog1 = Dialog(this)
         dialog1.setContentView(R.layout.okalertbox)
+        val content = dialog1.findViewById<Button>(R.id.txt1)
 
         dialog = Dialog(this)
         dialog.setContentView(R.layout.confirm_payment)
@@ -142,6 +143,7 @@ class payment : AppCompatActivity() {
                                     }
                                     store++
                                     val ok = dialog1.findViewById<Button>(R.id.ok)
+                                    content.text = "Paid Successful !"
                                     ok.setOnClickListener {
                                         dialog1.dismiss()
                                         Toast.makeText(applicationContext, "Order Success!!!", Toast.LENGTH_SHORT).show()

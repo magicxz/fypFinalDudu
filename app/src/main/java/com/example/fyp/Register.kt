@@ -70,8 +70,8 @@ class Register : AppCompatActivity() {
         }else if(phone.isEmpty()){
             rPhone.error = "Please enter your phone number"
             rPhone.requestFocus()
-        }else if(phone.length != 10){
-            rPhone.error = "Phone number only 10 digit"
+        }else if(phone.length != 11){
+            rPhone.error = "Phone number only 10 or 11 digit"
             rPhone.requestFocus()
         }else if(pass.isEmpty()){
             rPass.error = "Please enter your password"

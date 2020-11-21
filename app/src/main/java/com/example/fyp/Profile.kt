@@ -7,7 +7,6 @@ import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.view.WindowManager
-import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -23,7 +22,6 @@ import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.StorageTask
 import com.google.firebase.storage.UploadTask
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.register.*
 import java.io.IOException
 import kotlin.collections.HashMap
 
@@ -64,9 +62,9 @@ class Profile : AppCompatActivity() {
         }
     }
 
-      private fun displayInfo(){
-          //var currentUser= FirebaseAuth.getInstance().currentUser!!.uid
-          val usersRef = FirebaseDatabase.getInstance().getReference().child("Users").child(currentUser)
+    private fun displayInfo(){
+        //var currentUser= FirebaseAuth.getInstance().currentUser!!.uid
+        val usersRef = FirebaseDatabase.getInstance().getReference().child("Users").child(currentUser)
 
         val edit = findViewById<TextView>(R.id.edit)
 
@@ -138,35 +136,29 @@ class Profile : AppCompatActivity() {
 
     private fun updateProfile(){
         val progressDialog = ProgressDialog(this)
+        progressDialog.setMessage("Updating Profile...")
+        progressDialog.show()
 
-        if(user.username.equals(eUsername.text.toString()) && user.phone.equals(ePhone.text.toString())){
+        if(eUsername.text.toString().isEmpty()){
+            eUsername.error="Username cannot be empty"
+            eUsername.requestFocus()
+            return
+        }else if(ePhone.text.toString().isEmpty()){
+            ePhone.error="Phone cannot be empty"
+            ePhone.requestFocus()
+            return
+
+        } else if(user.username.equals(eUsername.text.toString()) && user.phone.equals(ePhone.text.toString())){
             this.finish()
         }else if(!(user.username.equals(eUsername.text.toString())) || !(user.phone.equals(ePhone.text.toString()))){
-            val phone = ePhone.text.toString()
-
-            if(eUsername.text.toString().isEmpty()){
-                eUsername.error="Username cannot be empty"
-                eUsername.requestFocus()
-                return
-            }else if(ePhone.text.toString().isEmpty()){
-                ePhone.error="Phone cannot be empty"
-                ePhone.requestFocus()
-                return
-            }else if(phone.length != 10){
-                ePhone.error = "Phone number only 10 digit"
-                ePhone.requestFocus()
-            }else{
-                progressDialog.setMessage("Updating Profile...")
-                progressDialog.show()
-                user.username = eUsername.text.toString()
-                user.phone = ePhone.text.toString()
-                val curUser = FirebaseDatabase.getInstance().getReference("Users")
-                curUser.child(currentUser).setValue(user)
-                progressDialog.dismiss()
-                startActivity(Intent(this,Profile::class.java))
-                this.finish()
-                Toast.makeText(this,"Update Successful!!!",Toast.LENGTH_LONG).show()
-            }
+            user.username = eUsername.text.toString()
+            user.phone = ePhone.text.toString()
+            val curUser = FirebaseDatabase.getInstance().getReference("Users")
+            curUser.child(currentUser).setValue(user)
+            Toast.makeText(this,"Update Successful!!!",Toast.LENGTH_SHORT).show()
+            progressDialog.dismiss()
+            startActivity(Intent(this,Profile::class.java))
+            this.finish()
         }
 
         if(imageUri != null){
@@ -190,7 +182,6 @@ class Profile : AppCompatActivity() {
                     mapProfileImg["image"] = url
                     usersRef!!.updateChildren(mapProfileImg)
                     progressDialog.dismiss()
-                    startActivity(Intent(this,Profile::class.java))
                     Toast.makeText(this,"Update Successful!!!",Toast.LENGTH_SHORT).show()
                 }
             }
