@@ -31,7 +31,7 @@ class CartDetail : AppCompatActivity() {
 
         query = FirebaseDatabase.getInstance().getReference("Carts").orderByChild("userId").equalTo(currentUser)
 
-        val intent = Intent(this,payment::class.java)
+    val intent = Intent(this,payment::class.java)
 
         query.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
@@ -72,7 +72,7 @@ class CartDetail : AppCompatActivity() {
                     deliveryFee.isVisible = false
                     textView9.isVisible = false
                     totalAmount.isVisible = false
-                    placeOrder.isVisible = false
+                    checkout.isVisible = false
                     nocart.isVisible = true
                     imgcart.isVisible = true
                     val adapter = cartAdapter(cart)
@@ -87,7 +87,7 @@ class CartDetail : AppCompatActivity() {
             }
         })
 
-        placeOrder.setOnClickListener{
+        checkout.setOnClickListener{
             startActivity(intent)
         }
 

@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
 import com.example.fyp.model.*
 import com.google.firebase.auth.FirebaseAuth
@@ -89,7 +90,7 @@ class payment : AppCompatActivity() {
 
         dialog1 = Dialog(this)
         dialog1.setContentView(R.layout.okalertbox)
-        val content = dialog1.findViewById<Button>(R.id.txt1)
+        val content = dialog1.findViewById<TextView>(R.id.txt1)
 
         dialog = Dialog(this)
         dialog.setContentView(R.layout.confirm_payment)
@@ -137,8 +138,7 @@ class payment : AppCompatActivity() {
                                         }
                                         for (x in cartList) {
                                             Log.d("abc", x.cartId)
-                                            FirebaseDatabase.getInstance().getReference("Carts")
-                                                .child(x.cartId).removeValue()
+                                            FirebaseDatabase.getInstance().getReference("Carts").child(x.cartId).removeValue()
                                         }
                                     }
                                     store++
